@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  item-db:
+    container_name: item-db
+    image: mongo:3
+    ports:
+      - '27017:27017'
+    networks:
+      - glob-network
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME= 'root'
+      - MONGO_INITDB_ROOT_PASSWORD= 'root321'
+    volumes:
+      - 'app-db:/data/db'
+    restart: on-failure
+
+  item-app:
+    container_name: item-app
+    image: sisaaref/item-app:v1
+    ports:
+      - '80:8080'
+    networks:
+      - glob-network
+    environment:
+      - NODE_ENV= 'production'
+      - DB_HSOT= 'item-db'
+    depends_on:
+      - item-db
+    restart: on-failure
+
+volumes:
+  app-db:
+    name: app-db
+
+networks:
+  glob-network:
+    name: glob-network
+    driver: bridge
