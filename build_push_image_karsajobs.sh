@@ -1,5 +1,5 @@
 # Todo => creating docker iamge
-docker build -t karsajobs:latest
+docker build -t karsajobs:latest .
 
 # Todo => creating new image that refers to docker hub image repo
 docker tag karsajobs:latest sisaaref/karsajobs:latest
