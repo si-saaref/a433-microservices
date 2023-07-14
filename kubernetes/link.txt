@@ -1,0 +1,2 @@
+karsajobs docker = https://hub.docker.com/r/sisaaref/karsajobs
+karsajobs ui docker = https://hub.docker.com/r/sisaaref/karsajobs-ui
